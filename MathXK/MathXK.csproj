@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.1</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>0.5.0-alpha</Version>
+    <Description>A special functions math library based on the Boost Math Toolkit</Description>
+    <Authors>Rocco Romeo</Authors>
+    <Company />
+    <Product>Math Expansion Kit</Product>
+    <Copyright>Rocco Romeo</Copyright>
+    <PackageLicenseUrl>http://www.boost.org/LICENSE_1_0.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/rromeo/MathXK</PackageProjectUrl>
+    <PackageTags>math special-functions root-finding</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard1.1\MathXK.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ValueTuple" Version="4.3.1" />
+  </ItemGroup>
+
+</Project>
