@@ -285,7 +285,7 @@ namespace MathXK
 
         /// <summary>
         /// Returns the natural log of the Gamma Function = ln(|Γ(x)|). 
-        /// Sets the sign = Sign(Γ(x)); 0 for poles.
+        /// Sets the sign = Sign(Γ(x)); 0 for poles or indeterminate.
         /// </summary>
         /// <param name="x">Lgamma function argument</param>
         /// <param name="sign">Lgamma output value = Sign(Γ(x))</param>
@@ -299,7 +299,7 @@ namespace MathXK
             if (double.IsInfinity(x)) {
                 if (x < 0) {
                     Policies.ReportDomainError("Lgamma(x: {0}): Requires x != -Infinity", x);
-                    return double.NaN;
+                    return double.PositiveInfinity;
                 }
                 sign = 1;
                 return double.PositiveInfinity;
@@ -310,8 +310,9 @@ namespace MathXK
             sign = 1;
             if (x <= 0) {
                 if (IsInteger(x)) {
+                    sign = 0;
                     Policies.ReportPoleError("Lgamma(x: {0}): Evaluation at zero, or a negative integer", x);
-                    return double.NaN;
+                    return double.PositiveInfinity;
                 }
 
                 if (x > -GammaSmall.UpperLimit)
