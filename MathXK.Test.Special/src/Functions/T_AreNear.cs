@@ -9,10 +9,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MathXK.Test.Functions
 {
 
-    /// <summary>
-    ///This is a test class for Math2Test and is intended
-    ///to contain all Math2Test Unit Tests
-    ///</summary>
     [TestClass()]
     public class T_AreNear
     {
@@ -130,12 +126,12 @@ namespace MathXK.Test.Functions
         ///A test for AreNearUlps
         ///</summary>
         [TestMethod()]
-        public void AreNearTest()
+        public void AreNearUlpsTest()
         {
 
             // Uses Bruce Dawson's technique
             // See http://www.cygnus-software.com/papers/comparingfloats/comparingfloats.htm
-            // Warning: this is non-portable and only works for IEEE
+            // This only works for IEEE
             // Adapted from his tests
 
 

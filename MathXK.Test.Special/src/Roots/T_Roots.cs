@@ -128,7 +128,7 @@ namespace MathXK.Test.Roots
 
         static bool AreNear(double x, double y, double relTolerance, double absTolerance)
         {
-            return Math2.AreNearRel(x, y, relTolerance) || Math2.AreNearAbs(x, y, absTolerance);
+            return (Math.Abs(x - y) <= Math.Max(absTolerance, relTolerance * Math.Max(Math.Abs(x), Math.Abs(y))));
         }
 
 

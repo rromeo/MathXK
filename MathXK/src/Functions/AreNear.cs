@@ -4,54 +4,12 @@
 //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 using System;
-using System.Diagnostics;
-using MathXK;
 
 namespace MathXK
 {
 
     public static partial class Math2
     {
-
-        /// <summary>
-        /// Returns true if | x - y | ≤ tolerance.
-        /// </summary>
-        /// <param name="x">Argument 1</param>
-        /// <param name="y">Argument 2</param>
-        /// <param name="tolerance">The absolute tolerance. Requires tolerance ≥ 0</param>
-        /// <returns></returns>
-        public static bool AreNearAbs(double x, double y, double tolerance)
-        {
-            if (!(tolerance >= 0))
-                throw new Exceptions.DomainException("Requires Relative Error(tolerance) >= 0: tolerance = " + tolerance);
-
-            return (Math.Abs(x - y) <= tolerance);
-        }
-
-
-
-        /// <summary>
-        /// Returns true if |x-y| ≤ tolerance*max(|x|,|y|).
-        /// </summary>
-        /// <param name="x">Argument 1</param>
-        /// <param name="y">Argument 2</param>
-        /// <param name="tolerance">The relative tolerance. Requires tolerance ≥ 0</param>
-        /// <returns></returns>
-        public static bool AreNearRel(double x, double y, double tolerance)
-        {
-            if (!(tolerance >= 0))
-                throw new Exceptions.DomainException("Requires Relative Error(tolerance) >= 0: tolerance = " + tolerance);
-
-            double absX = Math.Abs(x);
-            double absY = Math.Abs(y);
-            double diff = Math.Abs(x - y);
-
-            return (diff <= tolerance * Math.Max(absX, absY));
-        }
-
-
-
-
 
         /// <summary>
         /// Using integer representations, returns true if |x-y| ≤ maxUlps 
@@ -77,7 +35,7 @@ namespace MathXK
             // ensure that a NAN does not equal itself.
 
             if (maxUlps < 0)
-                throw new Exceptions.DomainException("Requires Relative Error(maxUlps) >= 0: maxUlps = " + maxUlps);
+                throw new Exceptions.DomainException("Requires Relative Error(maxUlps) >= 0: maxUlps = {0}", maxUlps);
 
             if (double.IsNaN(x) || double.IsNaN(y))
                 return false;
@@ -119,7 +77,7 @@ namespace MathXK
 
 
             // Now we can compare aInt and bInt to find out how far apart A and B are.
-            return (Math.Abs(aInt - bInt) <= (Int64)maxUlps);
+            return (Math.Abs(aInt - bInt) <= maxUlps);
         }
 
     }

@@ -265,7 +265,7 @@ namespace MathXK
                 p0 = p;
                 // next term is given by Eq 41:
                 p = 2 * (8 * a * p5 - 270 * p2 + 2187) / (5 * (4 * a * p4 - 216 * p - 243));
-            } while (!Math2.AreNearRel(p0, p, tolerance));
+            } while (!(Math.Abs(p0 - p) <= tolerance * Math.Max(Math.Abs(p0), Math.Abs(p))));
             //
             // Use Eq 45 to extract the result:
             //
