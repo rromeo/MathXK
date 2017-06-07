@@ -16,7 +16,7 @@ namespace MathXK.Test
         {
             double ulps = Math2.FloatDistance(expected, actual);
             if (!(expected == actual || Math.Abs(ulps) <= maxUlps)) 
-                throw new AssertFailedException("Failed: actual = " + actual + "; expected = " + expected + "; ulps = " + ulps + "; MaxUlps = " + maxUlps);
+                throw new AssertFailedException($"Failed: actual = {actual}; expected = {expected}; ulps = {ulps}; MaxUlps = {maxUlps}");
         }
 
         public static void AreNear(double expected, double actual, int maxUlps, Func<string> onFalureString)
@@ -29,21 +29,19 @@ namespace MathXK.Test
 #if false
         // Not supporting complex yet, but left here for future reference
 
-        public static void AreNear(Complex expected, Complex actual, int maxUlps) {
+        public static void AreNear(Complex expected, Complex actual, int maxUlps)
+        {
 
-            bool nearRe = Math2.AreNearUlps(expected.Real, actual.Real, maxUlps);
-            bool nearIm = Math2.AreNearUlps(expected.Imaginary, actual.Imaginary, maxUlps);
+            double ulpsRe = Math2.FloatDistance(expected.Real, actual.Real);
+            double ulpsIm = Math2.FloatDistance(expected.Imaginary, expected.Imaginary);
+
+            bool nearRe = (expected.Real == actual.Real || Math.Abs(ulpsRe) <= maxUlps);
+            bool nearIm = (expected.Imaginary == actual.Imaginary || Math.Abs(ulpsIm) <= maxUlps);
 
             if ( nearRe && nearIm )
                 return;
 
-            if ( !nearRe && nearIm )
-                throw new AssertFailedException("Failure: actual.Real not close to expected.Real: actual = " + actual + "; expected = " + expected + "; ulps = " + maxUlps);
-
-            if ( nearRe && !nearIm )
-                throw new AssertFailedException("Failure: actual.Imaginary not close to expected.Imaginary: actual = " + actual + "; expected = " + expected + "; ulps = " + maxUlps);
-
-            throw new AssertFailedException("Failure: actual not close to expected: actual = " + actual + "; expected = " + expected + "; ulps = " + maxUlps);
+            throw new AssertFailedException($"Failed: actual = {actual}; expected = {expected}; ulps = ({ulpsRe}, {ulpsIm}); MaxUlps = {maxUlps}");
         }
 
         public static void AreNear(Complex expected, Complex actual, int maxUlps, Func<string> onFalureString) {
@@ -58,10 +56,6 @@ namespace MathXK.Test
         }
 #endif
 
-
-        // See:
-        // http://stackoverflow.com/questions/933613/c-how-do-i-use-assert-unit-testing-to-verify-that-an-exception-has-been-thro
-
         public static void Throws<T>(Action func) where T: Exception
         {
             var exceptionThrown = false;
@@ -72,9 +66,7 @@ namespace MathXK.Test
             }
 
             if (!exceptionThrown) {
-                throw new AssertFailedException(
-                    String.Format("An exception of type {0} was expected, but not thrown", typeof(T))
-                    );
+                throw new AssertFailedException($"An exception of type {typeof(T)} was expected, but not thrown");
             }
         }
 
@@ -97,9 +89,7 @@ namespace MathXK.Test
 
             // watch for NaN
             if (!actual.Equals(expected))
-                throw new AssertFailedException(
-                    String.Format("Expected a result of {0}, got {1}", expected, actual)
-                    );
+                throw new AssertFailedException($"Expected a result of {expected}, got {actual}");
 
         }
 
