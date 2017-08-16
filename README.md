@@ -4,7 +4,7 @@ Math Expansion Kit (MathXK) is a free open-source C# special functions math libr
 Benefits:
 * Implements over 90 high-quality functions including: factorials, gammas, betas, error functions, C floating point functions, exponential integrals, bessels, elliptical integrals, polynomials, root-finding routines, and more.
 * Passes the standard Boost Math tests and is internally tested against an arbitrary precision library. 
-* .NET Standard 1.1 library
+* .NET Standard 2.0 library
 * Licensed under the Boost Software License v1.0: usable for commercial or non-commercial purposes without having to release your source code.
 
 # Project Status
@@ -13,14 +13,16 @@ The routines have been tested with Windows/Intel x64; testing is required on oth
 
 The statistical distributions remain to be done.
 
-# Requirements
-**Using the library (binaries) requires:**
-* .NET Core 1.0+
+### What's New?
+* v0.6.0 targets netstandard 2.0 (instead of netstandard 1.1). Makes it easier to work with the full .NET Framework. 
 
-.NET Framework will be supported when .NET standard 2.0 is released, apparently in [Q3 2017](https://github.com/dotnet/core/blob/master/roadmap.md)
+# Requirements
+**Using the library (binaries) requires one of the following:**
+* .NET Core 2.0+ 
+* .NET Framework 4.7+
 
 **Compiling the source code requires:**
-* Visual Studio 2017 
+* Visual Studio 2017.3 
 * C#7+
 * MS-Test V2
 
@@ -38,13 +40,12 @@ Use "Manage NuGet Packages..." to search for `MathXK`. (Make sure to check the "
 
 **In Visual Studio Package Manager Console:** 
 ```
-Install-Package MathXK -version "0.5.0-alpha"
+Install-Package MathXK -Version 0.6.0-alpha
 ```
 
 **On the command line:**
 ```
- cd your_project_folder 
- dotnet add package MathXK -v "0.5.0-alpha"
+dotnet add package MathXK --version 0.6.0-alpha
 ```
 
 ## B. Downloading the source code:
