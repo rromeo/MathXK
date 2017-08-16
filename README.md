@@ -14,7 +14,7 @@ The routines have been tested with Windows/Intel x64; testing is required on oth
 The statistical distributions remain to be done.
 
 ### What's New?
-* v0.6.0 targets netstandard 2.0 (instead of netstandard 1.1). Makes it easier to work with the full .NET Framework. 
+* v0.6.0 targets netstandard 2.0 (instead of netstandard 1.1). ValueTuple is no longer a dependency. 
 
 # Requirements
 **Using the library (binaries) requires one of the following:**
