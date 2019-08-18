@@ -9,11 +9,12 @@
     <Company />
     <Product>Math Expansion Kit</Product>
     <Copyright>Rocco Romeo</Copyright>
-    <PackageLicenseUrl>http://www.boost.org/LICENSE_1_0.txt</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/rromeo/MathXK</PackageProjectUrl>
     <PackageTags>math special-functions root-finding</PackageTags>
     <AssemblyVersion>0.6.0.0</AssemblyVersion>
     <FileVersion>0.6.0.0</FileVersion>
+    <PackageLicenseExpression>BSL-1.0</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
